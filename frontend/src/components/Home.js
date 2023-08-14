@@ -1,8 +1,13 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const Home = ({ data, setSelected, addToCart}) => {
+
   const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    addCart(product);
+  };
 
   return (
     <div>
@@ -15,7 +20,7 @@ const Home = ({ data, setSelected, addToCart}) => {
               alt="image"
               onClick={() => {
                 setSelected(product);
-                navigate('/ProductDetails');
+                navigate('/product-details');
               }}
             />
             <h2>{product.phone_name}</h2>
@@ -27,6 +32,7 @@ const Home = ({ data, setSelected, addToCart}) => {
                 navigate('/AddEdit');
               }}>Update Product</button>
               <button>Delete Product</button>
+
               <button onClick={()=>addToCart(product)}>Add to Cart</button>
             </div>
           </div>
