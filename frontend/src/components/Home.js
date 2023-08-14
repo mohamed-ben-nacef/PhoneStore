@@ -2,8 +2,7 @@ import React from 'react';
 import {useNavigate} from "react-router-dom"
 
 const Home = (props) =>{
-  const {data}=props
-  const navigate = useNavigate();
+  const {data,addItem}=props
   
   return (
     <div>
@@ -18,7 +17,7 @@ const Home = (props) =>{
                 <div className="product-card-buttons">
                   <button>Update Product</button>
                   <button>Delete Product</button>
-                  <button>Add to Cart</button>
+                  <button onClick={()=>addItem(e)}>Add to Cart</button>
                 </div>
               </div>
             );
