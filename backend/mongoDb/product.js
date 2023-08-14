@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-const productSchema = new mongoose.Schema({
+const phoneSchema = new mongoose.Schema({
     phone_name: String,
     brand: String,
     release_year: Number,
@@ -13,6 +13,6 @@ const productSchema = new mongoose.Schema({
     
   });
   
-const product = mongoose.model("product", productSchema);
+const phone = mongoose.model("phone", phoneSchema);
 
-module.exports = product;
+module.exports = phone;
