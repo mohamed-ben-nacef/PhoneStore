@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductDetails = ({ selected }) => {
+const ProductDetails = ({ selected, addToCart }) => {
   return (
     <div>
       <div className="products-details">
@@ -13,7 +13,7 @@ const ProductDetails = ({ selected }) => {
             <p>{`Released in ${selected.release_year} by ${selected.brand}`}</p>
             <p>{`${selected.storage}GB, ${selected.memory}GB, ${selected.camera}MP, ${selected.screen_size} inches`}</p>
             <h2>Price: ${selected.price}</h2>
-            <button>Add to Cart</button>
+            <button onClick={()=>addToCart(selected)}>Add to Cart</button>
           </div>
         </div>
       </div>

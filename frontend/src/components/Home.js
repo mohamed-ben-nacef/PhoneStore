@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Home = ({ data, setSelected }) => {
+const Home = ({ data, setSelected, addToCart}) => {
   const navigate = useNavigate();
 
   return (
@@ -24,7 +24,7 @@ const Home = ({ data, setSelected }) => {
             <div className="product-card-buttons">
               <button>Update Product</button>
               <button>Delete Product</button>
-              <button>Add to Cart</button>
+              <button onClick={()=>addToCart(product)}>Add to Cart</button>
             </div>
           </div>
         ))}
