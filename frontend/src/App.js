@@ -5,11 +5,9 @@ import Home from './components/Home'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Navbars from "./components/Navbars"
+import Navbars from "./components/Navbars.js"
 
 function App() {
-
-  const navigate = useNavigate();
   const [data, setData] = useState([]); //! MAIN DATA
   const [cartData,setCartData] = useState([]);
   const [selected,setSelected] = useState({}); //! one product selected for the detailed
@@ -26,15 +24,18 @@ function App() {
   const handleAddCart = (item) =>{
     setCartData([...cartData,item]);
   }
-
+  const handleDeleteCart = (item) =>{
+    const updatedCart = cartData.filter((e)=> e!==item);
+    setCartData(updatedCart);
+  }
 
   return (
     <BrowserRouter>
     <Navbars/>
         <Routes>
-          <Route exact path="/" element={<Home data={data} setSelected={setSelected} />} />
-          <Route path="/cart" element={<CartList />} />
-          <Route path="/ProductDetails" element={<ProductDetails selected={selected} />} />
+          <Route exact path="/" element={<Home data={data} setSelected={setSelected} addToCart={handleAddCart}/>} />
+          <Route path="/cart" element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
+          <Route path="/ProductDetails" element={<ProductDetails selected={selected} addToCart={handleAddCart}/>} />
         </Routes>
     
     </BrowserRouter>
