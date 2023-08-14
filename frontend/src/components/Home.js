@@ -22,7 +22,10 @@ const Home = ({ data, setSelected, addToCart}) => {
             <p>{`Released in ${product.release_year} by ${product.brand}`}</p>
             <p className="card-item-price">Price: ${product.price}</p>
             <div className="product-card-buttons">
-              <button>Update Product</button>
+              <button onClick={() => {
+                setSelected(product);
+                navigate('/AddEdit');
+              }}>Update Product</button>
               <button>Delete Product</button>
               <button onClick={()=>addToCart(product)}>Add to Cart</button>
             </div>

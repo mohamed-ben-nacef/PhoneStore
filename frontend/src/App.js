@@ -1,7 +1,9 @@
 import './App.css';
-import CartList from './components/CartList'
-import ProductDetails from './components/ProductDetails'
 import Home from './components/Home'
+import ProductDetails from './components/ProductDetails'
+import CartList from './components/CartList'
+import AddEdit from './components/AddEdit';
+
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
@@ -36,6 +38,7 @@ function App() {
           <Route exact path="/" element={<Home data={data} setSelected={setSelected} addToCart={handleAddCart}/>} />
           <Route path="/cart" element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
           <Route path="/ProductDetails" element={<ProductDetails selected={selected} addToCart={handleAddCart}/>} />
+          <Route path="/AddEdit" element={<AddEdit selected={selected}/>} />
         </Routes>
     
     </BrowserRouter>
