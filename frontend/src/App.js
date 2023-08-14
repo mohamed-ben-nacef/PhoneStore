@@ -1,44 +1,44 @@
-import './App.css';
-import CartList from './components/CartList'
-import ProductDetails from './components/ProductDetails'
-import Home from './components/Home'
-import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Navbars from "./components/Navbars"
+import Navbars from './components/Navbars';
+import Home from './components/Home';
+import CartList from './components/CartList';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
+  const [data, setData] = useState([]);
+  const [cartData, setCartData] = useState([]);
+  const [selected, setSelected] = useState({});
+  const [trigger, setTrigger] = useState(false);
 
-  const navigate = useNavigate();
-  const [data, setData] = useState([]); //! MAIN DATA
-  const [cartData,setCartData] = useState([]);
-  const [selected,setSelected] = useState({}); //! one product selected for the detailed
-  console.log('🦊',cartData);
+  useEffect(() => {
+    axios
+      .get('http://localhost:4000/api/phones')
+      .then((response) => setData(response.data))
+      .catch((error) => console.log(error));
+  }, [trigger]);
 
+  const handleAddCart = (item) => {
+    setCartData([...cartData, item]);
+  };
 
-  useEffect(()=>{
-    axios.get('http://localhost:4000/api/phones')
-      .then((response)=>setData(response.data))
-      .catch((error)=>console.log(error))
-  },[])
-
-
-  const handleAddCart = (item) =>{
-    setCartData([...cartData,item]);
-  }
-
-
+  const removeFromCart = (productToRemove) => {
+    const updatedCartItems = cartItems.filter(product => product !== productToRemove);
+    setCartItems(updatedCartItems);
   return (
     <BrowserRouter>
-    <Navbars/>
-        <Routes>
-          <Route exact path="/" element={<Home data={data} setSelected={setSelected} />} />
-          <Route path="/cart" element={<CartList />} />
-          <Route path="/ProductDetails" element={<ProductDetails selected={selected} />} />
-        </Routes>
-    
+      <Navbars />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={<Home data={data} setSelected={setSelected} addCart={handleAddCart} />}
+        />
+        <Route path="/cart" element={<CartList cartData={cartData} />} />
+        <Route path="/product-details" element={<ProductDetails selected={selected} />} />
+      </Routes>
     </BrowserRouter>
-
   );
 }
 
