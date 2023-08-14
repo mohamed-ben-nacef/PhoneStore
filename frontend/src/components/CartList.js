@@ -7,8 +7,8 @@ const CartList = ({cart, deleteCart}) =>{
     var theTotal=0;
     cart.map((e)=>{
       theTotal+=e.price
-      setTotal(theTotal)
     })
+    setTotal(theTotal)
   },[cart,total])
   return (
     <div className="cart-list">
