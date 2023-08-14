@@ -7,16 +7,27 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Navbars from "./components/Navbars"
 
-
 function App() {
-  const [data, setData] = useState([]);
-  const [selected, setSelected] = useState({});
+
+  const navigate = useNavigate();
+  const [data, setData] = useState([]); //! MAIN DATA
+  const [cartData,setCartData] = useState([]);
+  const [selected,setSelected] = useState({}); //! one product selected for the detailed
+  console.log('🦊',cartData);
+
 
   useEffect(()=>{
     axios.get('http://localhost:4000/api/phones')
       .then((response)=>setData(response.data))
       .catch((error)=>console.log(error))
   },[])
+
+
+  const handleAddCart = (item) =>{
+    setCartData([...cartData,item]);
+  }
+
+
   return (
     <BrowserRouter>
     <Navbars/>
@@ -27,6 +38,7 @@ function App() {
         </Routes>
     
     </BrowserRouter>
+
   );
 }
 
