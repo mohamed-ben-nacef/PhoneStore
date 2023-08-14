@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate} from "react-router-dom"
 
-const CartList = ({cart}) =>{
-  const navigate=useNavigate();
-  var [total, setTotal] = useState(0);
+
+const CartList = ({cart, deleteCart}) =>{
+  const [total, setTotal] = useState(0);
   useEffect(()=>{
+    var theTotal=0;
     cart.map((e)=>{
-      setTotal(total + e.price)
+      theTotal+=e.price
     })
-  },[total])
+    setTotal(theTotal)
+  },[cart,total])
   return (
     <div className="cart-list">
       <h1>Your cart</h1>
@@ -17,7 +18,7 @@ const CartList = ({cart}) =>{
           <div className="cart-item" key={i}>
             <span>Product Name: {e.phone_name}</span>
             <span>Price: ${e.price}</span>
-            <button className="cart-list-button">Remove</button>
+            <button className="cart-list-button" onClick={()=>deleteCart(e)}>Remove</button>
           </div>
         )
       })}

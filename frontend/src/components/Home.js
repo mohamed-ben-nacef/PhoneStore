@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-const Home = ({ data, setSelected, addCart }) => {
+
+const Home = ({ data, setSelected, addToCart}) => {
+
   const navigate = useNavigate();
 
   const handleAddToCart = (product) => {
@@ -25,9 +27,13 @@ const Home = ({ data, setSelected, addCart }) => {
             <p>{`Released in ${product.release_year} by ${product.brand}`}</p>
             <p className="card-item-price">Price: ${product.price}</p>
             <div className="product-card-buttons">
-              <button>Update Product</button>
+              <button onClick={() => {
+                setSelected(product);
+                navigate('/AddEdit');
+              }}>Update Product</button>
               <button>Delete Product</button>
-              <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+
+              <button onClick={()=>addToCart(product)}>Add to Cart</button>
             </div>
           </div>
         ))}
