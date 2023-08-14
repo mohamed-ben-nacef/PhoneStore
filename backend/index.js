@@ -1,6 +1,6 @@
 const express = require('express');
 const cors =require('cors');
-const port = 5000;
+const port = 4000;
 const app = express();
 const db = require('./mongoDb')
 app.use(cors());

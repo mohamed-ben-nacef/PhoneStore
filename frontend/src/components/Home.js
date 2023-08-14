@@ -1,11 +1,14 @@
-const ProductList = (props) =>{
+import React from 'react';
+import {useNavigate} from "react-router-dom"
+
+const Home = (props) =>{
   const {data}=props
-  console.log(data);
+  const navigate = useNavigate();
+  
   return (
     <div>
       <div className="products-list">
-        {data && data.map((e,i) => {
-          console.log(e.phone_name);
+        {data && data.map((e,i) => {  
             return (
               <div className="product-card" key={i}>
                 <img className="img" src={e.img_url} alt="image" onClick={()=>{}} />
@@ -25,4 +28,4 @@ const ProductList = (props) =>{
   );
 }
 
-export default ProductList;
+export default Home;
