@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 const CartList = ({data, deleteCart}) =>{
   console.log(cart);
   var [cart, setCart] = useState(data);
