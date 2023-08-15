@@ -4,15 +4,12 @@ import '../App.css';
 
 const Navbars = ({ onSearch }) => {
   const [query, setQuery] = useState('');
-  const [isAddPhoneModalOpen, setAddPhoneModalOpen] = useState(false);
 
   const handleSearch = (e) => {
     setQuery(e.target.value);
     onSearch(e.target.value);
   };
-  const handleAddPhoneClick = () => {
-    setAddPhoneModalOpen(true);
-  };
+
 
   return (
     <nav className="navigation">
