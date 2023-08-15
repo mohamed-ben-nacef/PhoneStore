@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 const CartList = ({data, deleteCart}) =>{
-  console.log(cart);
   var [cart, setCart] = useState(data);
   const [total, setTotal] = useState(0);
   useEffect(()=>{
     var theTotal=0;
     setCart(data)
-    data.map((e)=>{
+    data.map((e)=>
       theTotal+=e.price
-    })
+    )
     setTotal(theTotal)
   },[data])
 
@@ -28,7 +27,7 @@ const CartList = ({data, deleteCart}) =>{
       {cart && cart.map((e,i)=>{
         return (
           <div className="cart-item" key={i}>
-            <img className='img' src={e.img_url} alt='image'/>
+            <img className='img' src={e.img_url} alt=''/>
             <span>Product Name: {e.phone_name}</span>
             <span>Price: ${e.price}</span>
             <button className="cart-list-button" onClick={()=>deleteCart(e)}>Remove</button>
