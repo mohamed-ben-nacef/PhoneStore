@@ -74,17 +74,29 @@
   display: flex;
   padding: 20px;
   justify-content: center;
+  
 }
 
 .product-details {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10%;
+  padding-right: 24%;
+  padding-left: 24%;
 }
 
 .product-details img {
   max-width: 300px;
   margin-bottom: 20px;
+  padding-bottom: 5%;
+  transition: transform 1s;
+}
+
+.product-details img:hover{
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
 }
 
 .product-details h2 {
@@ -99,6 +111,11 @@
 .product-details button {
   margin-top: 20px;
   padding: 10px;
+  border-radius: 5px;
+}
+.product-details button:hover {
+  background-color: rgb(108, 175, 6);
+  transition: all ease 1s;  
 }
 
 
@@ -327,17 +344,43 @@
 .form-add-phone{
   font-weight: bold;
   margin: auto;
-  justify-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 10%;
-  width: 40%;
 }
 
 .form-add-phone input{
+  align-items: end;
+  width: 50px;
   font-weight: normal;
+  background-color: #dfdfdf ;
+  border: 1px #333333 solid;
+  border-radius: 15px;
+  padding-left: 10px;
+  transition: width 0.8s ease-in-out;
 }
+
+.form-add-phone input:hover{
+  width: 30%;
+}
+
+/* ! */
+.col-25{  
+  float:left;
+  width: 100%;
+  margin-top: 6px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.col-75{
+  float: inline-end;
+  width: 400%;
+  margin-top: 6px;
+  padding-top: 10px;
+}
+
+
 
 .submit{
   margin-left: 35%;
@@ -355,8 +398,10 @@
   transition: all ease 1s;
 }
 .navigation {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   font-size: medium;
-  background-color: #cacaca;
+  background-color: rgba(223, 223, 223, 0.7);
+  backdrop-filter: blur(8px); 
   font-weight: bold;
   height: 400 px;
   display: flex;
@@ -366,6 +411,7 @@
   padding-bottom: 30px ;
   position: fixed;
   width: 100%;
+  z-index: 4;
 }
 
 .navigation a{
@@ -375,9 +421,10 @@
   margin-left: 20px;
 } 
 .navigation input {
-  background-color: #cacaca;
+  background-color: #dfdfdf ;
   border: 1px #333333 solid;
   border-radius: 15px;
+  padding-left: 10px;
   margin-top: 12%;
   margin-right: 40px;
 }
