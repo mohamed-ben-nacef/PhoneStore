@@ -1,40 +1,45 @@
+import { useState } from 'react';
 import { Navbar, Nav } from 'rsuite';
 import HomeIcon from '@rsuite/icons/legacy/Home';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
-const Navbars = ()=>{
+const Navbars = ({ onSearch }) => {
+  const [query, setQuery] = useState('');
+  const [isAddPhoneModalOpen, setAddPhoneModalOpen] = useState(false);
 
-    return (
-        <Navbar >
-            <Nav>
-              <div>
-                <Nav.Item icon={<HomeIcon />} >
-                <Link to={"/"}>
-                <a href="/" >
-                    Home
-                  </a>
-                </Link>
-                 
-                </Nav.Item>
-                <Nav.Item >
-                  <Link to={"/cart"}>
-                <a href="/" >
-                    Cart
-                  </a>
-                </Link>
-                </Nav.Item>
-              </div>
-            </Nav>
-            <Nav pullRight>
-              <div >
-                <input
-                  type="text"
-                  placeholder="Search..."
-                />
-              </div>
-            </Nav>
-        </Navbar>
-    )
-}
-export default Navbars
+
+  const handleSearch = (e) => {
+    setQuery(e.target.value);
+    onSearch(e.target.value);
+  };
+  const handleAddPhoneClick = () => {
+    setAddPhoneModalOpen(true);
+  };
+
+  return (
+    <Navbar>
+      <Nav>
+        <div>
+          <Nav.Item icon={<HomeIcon />}>
+            <Link to={'/'}>
+              <a href='/'>Home</a>
+            </Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Link to={'/cart'}>
+              <a href='/'>Cart</a>
+            </Link>
+          </Nav.Item>
+        </div>
+      </Nav>
+      <Nav pullRight>
+        <div>
+          <input type='text' placeholder='Search...' value={query} onChange={handleSearch} />
+        </div>
+      </Nav>
+    </Navbar>
+  );
+};
+
+export default Navbars;
