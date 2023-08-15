@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
 
-const CartList = ({cart, deleteCart}) =>{
-  console.log(cart);  
+const CartList = ({data, deleteCart}) =>{
+  console.log(cart);
+  var [cart, setCart] = useState(data);
   const [total, setTotal] = useState(0);
   useEffect(()=>{
     var theTotal=0;
-    cart.map((e)=>{
+    setCart(data)
+    data.map((e)=>{
       theTotal+=e.price
     })
     setTotal(theTotal)
-  },[total])
+  },[data])
 
   const checkout = () =>{
-    if(cart){
-      cart = [];
-      setTotal(0);
+    if(data){
+      setCart([])
+      setTotal(0)
       alert('Thank you for your purchase');
     } else {
       alert('Your shopping cart is empty');
