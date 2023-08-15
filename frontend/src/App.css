@@ -31,13 +31,16 @@
 }
 
 .product-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  border: 1px solid #cbcbcb;
   padding: 10px;
   margin: 10px;
   width: 250px;
   text-align: center;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.product-card:hover{
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 .product-card img {
@@ -66,15 +69,21 @@
   margin: 5px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #00bcd4;
+  background-color: #cacaca;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: all ease 0.3s;
 }
 
-.product-card-buttons button:hover {
+.addCart:hover{
+  background-color: rgb(108, 175, 6);
+}
+.updateProd:hover{
   background-color: #008c9e;
+}
+.deleteProd:hover{
+  background-color: red;
 }
 
 /* Product Details and Add/Edit page styles */
