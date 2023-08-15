@@ -38,7 +38,7 @@ function App() {
           path="/"
           element={<Home data={data} setData={setData} setSelected={setSelected} addToCart={handleAddCart} searchQuery={searchQuery} />}
         />
-        <Route path='/cart' element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
+        <Route path='/cart' element={<CartList data={cartData} deleteCart={handleDeleteCart} />} />
         <Route path='/ProductDetails' element={<ProductDetails selected={selected} addToCart={handleAddCart} />} />
         <Route path='/AddPhone' element={<AddPhone />} />
         <Route path='/Update/:id' element={<Update />} />
