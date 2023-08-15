@@ -1,39 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Update = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
+  const location = useLocation();
+  const formdefData = location.state.formdef_data;
 
   const [phoneData, setPhoneData] = useState({
-    _id: '',
-    phone_name: '',
-    brand: '',
-    release_year: '',
-    storage: '',
-    memory: '',
-    camera: '',
-    screen_size: '',
-    img_url: '',
-    price: '',
+    _id: formdefData._id,
+    phone_name: formdefData.phone_name,
+    brand: formdefData.brand,
+    release_year: formdefData.release_year,
+    storage: formdefData.storage,
+    memory: formdefData.memory,
+    camera: formdefData.camera,
+    screen_size: formdefData.screen_size,
+    img_url: formdefData.img_url,
+    price: formdefData.price,
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // useEffect(() => {
-  //   fetchPhoneData();
-  // }, []);
-
-  // const fetchPhoneData = () => {
-  //   axios
-  //     .get(`http://localhost:4000/api/phones/${id}`)
-  //     .then((response) => {
-  //       setPhoneData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching phone data:', error);
-  //     });
-  // };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -56,6 +46,8 @@ const Update = () => {
     axios
       .put(`http://localhost:4000/api/phones/${phoneId}`, updatedData)
       .then((response) => {
+        navigate('/');
+        window.location.reload(false);
         console.log('Phone updated:', response.data);
       })
       .catch((error) => {
@@ -92,5 +84,3 @@ const Update = () => {
 };
 
 export default Update;
-
-  
