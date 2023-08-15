@@ -35,7 +35,7 @@ const Navbars = ({ onSearch }) => {
 
           <Nav.Item>
             <Link to={'/cart'}>
-              <a href='/'>Cart</a>
+              <a href='/'>Cart 🛒</a>
             </Link>
           </Nav.Item>
 
