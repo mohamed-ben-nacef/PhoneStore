@@ -247,11 +247,6 @@
   background-color: #008c9e;
 }
 
-/* Search bar styles */
-/* .Navbar {
-  background-color: #282c34;
-  color: #fff;
-} */
 
 
 /* Responsive styles */
@@ -361,7 +356,7 @@
   transition: width 0.8s ease-in-out;
 }
 
-.form-add-phone input:hover{
+.form-add-phone input:focus{
   width: 30%;
 }
 
