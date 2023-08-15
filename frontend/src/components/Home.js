@@ -41,12 +41,13 @@ const Home = ({ data, setData, setSelected, addToCart, searchQuery }) => {
             <p className='card-item-price'>Price: ${product.price}</p>
             <div className='product-card-buttons'>
               <button className='addCart' onClick={() => addToCart(product)}>Add to Cart</button>
-              <button className='updateProd'
-                onClick={() => {
-                  setSelected(product);
-                  navigate('/Update');
+              <button
+                  className='updateProd'
+                   onClick={() => {
+                  navigate(`/Update/${product._id}`, { state: { formdef_data: product } });
                 }}
-              >
+                >
+
                 Update Product
               </button>
               <button className='deleteProd' onClick={() => handleDelete(product._id)}>Delete Product</button>
