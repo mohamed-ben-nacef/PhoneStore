@@ -10,9 +10,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbars from './components/Navbars.js';
 
 function App() {
-  const [data, setData] = useState([]); //! MAIN DATA
+  const [data, setData] = useState([]); // Main data
   const [cartData, setCartData] = useState([]);
-  const [selected, setSelected] = useState({}); //! one product selected for the detailed
+  const [selected, setSelected] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -35,8 +35,7 @@ function App() {
       <Navbars onSearch={setSearchQuery} />
       <Routes>
         <Route
-          exact
-          path='/'
+          path="/"
           element={<Home data={data} setData={setData} setSelected={setSelected} addToCart={handleAddCart} searchQuery={searchQuery} />}
         />
         <Route path='/cart' element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
