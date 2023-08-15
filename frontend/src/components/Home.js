@@ -40,7 +40,8 @@ const Home = ({ data, setData, setSelected, addToCart, searchQuery }) => {
             <p>{`Released in ${product.release_year} by ${product.brand}`}</p>
             <p className='card-item-price'>Price: ${product.price}</p>
             <div className='product-card-buttons'>
-              <button
+              <button className='addCart' onClick={() => addToCart(product)}>Add to Cart</button>
+              <button className='updateProd'
                 onClick={() => {
                   setSelected(product);
                   navigate('/AddEdit');
@@ -48,8 +49,8 @@ const Home = ({ data, setData, setSelected, addToCart, searchQuery }) => {
               >
                 Update Product
               </button>
-              <button onClick={() => handleDelete(product._id)}>Delete Product</button>
-              <button onClick={() => addToCart(product)}>Add to Cart</button>
+              <button className='deleteProd' onClick={() => handleDelete(product._id)}>Delete Product</button>
+              
             </div>
           </div>
         ))}
