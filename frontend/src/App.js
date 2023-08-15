@@ -2,7 +2,8 @@ import './App.css';
 import Home from './components/Home';
 import ProductDetails from './components/ProductDetails';
 import CartList from './components/CartList';
-import AddPhone from './components/AddEdit';
+import AddPhone from './components/Add';
+import Update from './components/Update'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
@@ -41,6 +42,7 @@ function App() {
         <Route path='/cart' element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
         <Route path='/ProductDetails' element={<ProductDetails selected={selected} addToCart={handleAddCart} />} />
         <Route path='/AddPhone' element={<AddPhone />} />
+        <Route path='/Update' element={<Update />} />
       </Routes>
     </BrowserRouter>
   );

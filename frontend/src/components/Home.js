@@ -44,7 +44,7 @@ const Home = ({ data, setData, setSelected, addToCart, searchQuery }) => {
               <button className='updateProd'
                 onClick={() => {
                   setSelected(product);
-                  navigate('/AddEdit');
+                  navigate('/Update');
                 }}
               >
                 Update Product
