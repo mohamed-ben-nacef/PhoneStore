@@ -20,7 +20,7 @@ function App() {
       .get('http://localhost:4000/api/phones')
       .then((response) => setData(response.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [data]);
 
   const handleAddCart = (item) => {
     setCartData([...cartData, item]);
@@ -38,11 +38,11 @@ function App() {
           path="/"
           element={<Home data={data} setData={setData} setSelected={setSelected} addToCart={handleAddCart} searchQuery={searchQuery} />}
         />
-        <Route path="/cart" element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
-        <Route path="/ProductDetails" element={<ProductDetails selected={selected} addToCart={handleAddCart} />} />
-        <Route path="/AddPhone" element={<AddPhone />} />
-        <Route path="/Update/:id" element={<Update />} /> {/* Use element instead of component */}
-      </Routes>
+        <Route path='/cart' element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
+        <Route path='/ProductDetails' element={<ProductDetails selected={selected} addToCart={handleAddCart} />} />
+        <Route path='/AddPhone' element={<AddPhone />} />
+        <Route path='/Update/:id' element={<Update />} />
+      </Routes> 
     </BrowserRouter>
   );
 }
