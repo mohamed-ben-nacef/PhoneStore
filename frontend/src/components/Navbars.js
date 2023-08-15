@@ -26,16 +26,24 @@ const Navbars = ({ onSearch }) => {
               <a href='/'>Home</a>
             </Link>
           </Nav.Item>
+          
+          <Nav.Item>
+            <Link to={'/AddPhone'}>
+              <a href='/AddPhone'>Add Product</a>
+            </Link>
+          </Nav.Item>
+
           <Nav.Item>
             <Link to={'/cart'}>
               <a href='/'>Cart</a>
             </Link>
           </Nav.Item>
-        </div>
-      </Nav>
-      <Nav pullRight>
-        <div>
-          <input type='text' placeholder='Search...' value={query} onChange={handleSearch} />
+
+          <Nav.Item>
+            <div>
+             <input type='text' placeholder='Search...' value={query} onChange={handleSearch} />
+            </div>
+          </Nav.Item>
         </div>
       </Nav>
     </Navbar>
