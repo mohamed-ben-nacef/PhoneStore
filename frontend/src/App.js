@@ -20,7 +20,7 @@ function App() {
       .get('http://localhost:4000/api/phones')
       .then((response) => setData(response.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [data]);
 
   const handleAddCart = (item) => {
     setCartData([...cartData, item]);
@@ -42,8 +42,8 @@ function App() {
         <Route path='/cart' element={<CartList cart={cartData} deleteCart={handleDeleteCart} />} />
         <Route path='/ProductDetails' element={<ProductDetails selected={selected} addToCart={handleAddCart} />} />
         <Route path='/AddPhone' element={<AddPhone />} />
-        <Route path='/Update' element={<Update />} />
-      </Routes>
+        <Route path='/Update/:id' element={<Update />} />
+      </Routes> 
     </BrowserRouter>
   );
 }
